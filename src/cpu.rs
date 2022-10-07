@@ -1,10 +1,12 @@
 use emulator::BusInterface;
+use std::num::Wrapping;
+
 
 struct RegisterFile{
-  gp: Vec<u32>,
-  flag: u16,
-  status: u16,
-  pc: u32
+  gp: Vec<Wrapping<u32>>, //General Purpose Registers 
+  flag: u16, //Flag Register
+  status: u16, //Status Register
+  pc: Wrapping<u32> //Program Counter
 }
 
 struct CPU {

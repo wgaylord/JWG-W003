@@ -6,9 +6,9 @@ use crate::BusInterface;
 
 #[derive(Debug)]
 pub struct RAM {
-    data: Vec<u8>,
-    start: u32,
-    length: u32,
+    data: Vec<u8>, //This hold actual memory
+    start: u32, //Starting address, this can be any where in the address space of the machine
+    length: u32, //Number of bytes in our memory
 }
 
 impl RAM {
@@ -58,8 +58,8 @@ pub struct ROM {
 impl ROM {
     pub fn new(start_address: u32, length: u32,source_file:&str) -> ROM {
 
-        let mut data = fs::read(source_file).expect("Error Reading file while initalizing a ROM.");
-        data.resize(length as usize,0);
+        let mut data = fs::read(source_file).expect("Error Reading file while initalizing a ROM."); //Initalize ROM from a File
+        data.resize(length as usize,0); //Makes sure the ROM is the requested length, this slices off the extra if the file is larger or pads with zeros if shorter
         ROM{ data: data, start:start_address,length:length }
     }
 }

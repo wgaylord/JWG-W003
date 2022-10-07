@@ -10,7 +10,7 @@ use emulator::dma::DMA;
 
 fn main() {
 
-    let ram = RAM::new(0,1024);
+    let ram = RAM::new(0,1024); 
     let rom = ROM::new(1024,1024,"rom.bin");
 
     let mut bus = BUS::new(0,2048);
